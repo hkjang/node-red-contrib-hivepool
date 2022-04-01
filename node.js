@@ -39,6 +39,15 @@ module.exports = function (RED) {
             // https://hiveon.net/api/v1/stats/miner/xxxxxxxxxx/ETH
             // https://hiveon.net/api/v1/stats/miner/xxxxxxxxxx/1/workers
             // https://hiveon.net/api/v1/stats/miner/xxxxxxxxxx/ETH/billing-acc
+            if(node.symbol === '' | typeof node.symbol === 'undefined'){
+                node.symbol = 'ETH'
+            }
+            if(node.miner === '' | typeof node.miner === 'undefined'){
+                node.error('have to set coin address');
+            }else{
+                node.miner = node.miner.toLowerCase().replace('0x','');
+            }
+
             if(node.payload.api.toLowerCase() === 'stats'){
                 if(node.payload.action === 'miner'){
                     node.url = url +  '/stats/miner/' + node.miner + '/' + node.symbol;
@@ -47,16 +56,20 @@ module.exports = function (RED) {
                 }else if(node.payload.action === 'billing-acc'){
                     node.url = url +  '/stats/miner/' + node.miner + '/' + node.symbol +'/billing-acc';
                 }
+            }else{
+                node.payload.api = 'stats';
+                node.url = url +  '/stats/miner/' + node.miner + '/ETH';
             }
+            node.error(node.url);
 
             axios.get(node.url, node.options)
                 .then(function (response){
                     msg.payload = response.data;
                     node.send(msg);
                 }).catch(function (err){
-                    msg.payload = err;
-                    node.send(msg);
-                });
+                msg.payload = err;
+                node.send(msg);
+            });
         });
     }
 
