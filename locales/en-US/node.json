@@ -1,0 +1,12 @@
+{
+  "hivepool" : {
+    "label" : {
+      "api": "Api",
+      "action": "Action"
+    },
+    "desc" : {
+      "api": "stats",
+      "action": "One of miner or workers or billing-acc."
+    }
+  }
+}

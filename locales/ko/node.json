@@ -1,0 +1,12 @@
+{
+  "hivepool" : {
+    "label" : {
+      "api": "API 종류",
+      "action": "API Action"
+    },
+    "desc" : {
+      "api": "stats",
+      "action": "miner or workers or billing-acc 중 하나를 입력하세요."
+    }
+  }
+}

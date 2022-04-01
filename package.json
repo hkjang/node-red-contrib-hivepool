@@ -1,0 +1,35 @@
+{
+  "name": "node-red-contrib-hivepool",
+  "version": "1.0.0",
+  "description": "Node-RED node for hivepool API",
+  "main": "node.js",
+  "scripts": {
+    "test": "mocha \"test/**/*_spec.js\" --timeout 3000"
+  },
+  "node-red": {
+    "nodes": {
+      "hivepool": "node.js"
+    }
+  },
+  "bugs": {
+    "url": "https://github.com/hkjang/node-red-contrib-hivepool/issues"
+  },
+  "homepage": "https://github.com/hkjang/node-red-contrib-hivepool#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hkjang/node-red-contrib-hivepool.git"
+  },
+  "keywords": [
+    "node-red-contrib-contribgen",
+    "node-red",
+    "hivepool",
+    "hiveon",
+    "hive",
+    "hivepool api",
+    "nodejs"
+  ],
+  "dependencies": {
+    "axios": "^0.21.1"
+  },
+  "license": "Apache-2.0"
+}
